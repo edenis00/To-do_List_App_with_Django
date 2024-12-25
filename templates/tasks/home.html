@@ -1,0 +1,31 @@
+{% extends "tasks/base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="flex items-center w-full justify-between">
+    <h2 class="text-gray-800 text-2xl mb-2">ToDo App</h2>
+    <a href="{% url 'task-create' %}" class="block px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">New</a>
+</div>
+<hr class="border mt-1 mb-4">
+<div class="flex flex-wrap gap-2 w-full">
+    {% if tasks %}
+    {% for task in tasks %}
+    <div class="shadow-md rounded max-w-md px-4 py-6 bg-white mb-2">
+        <h3 class="text-gray-800 text-xl">Tasks</h3>
+        <div class="border-b py-2 text-gray-600">
+            <h4 class="text-lg">{{ task.title }}</h4>
+            <p class="text-md">{{ task.description }}</p>
+            <p class="text-xs mt-1">{{ task.created_at }}</p>
+            <div class="flex gap-2 mt-2">
+                <a href="{% url 'task-update' task.id %}"
+                    class="px-2 py-1 rounded text-white text-xs bg-yellow-500 hover:bg-yellow-600">Edit</a>
+                <a href="{% url 'task-delete' task.id %}"
+                    class="px-2 py-1 rounded text-white text-xs bg-red-500 hover:bg-red-600">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-gray-800 text-lg">No tasks available</p>
+    {% endif %}
+</div>
+{% endblock content %}

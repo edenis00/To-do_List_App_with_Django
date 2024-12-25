@@ -1,0 +1,31 @@
+{% extends 'tasks/base.html' %}
+{% block title %}Add Task{% endblock title %}
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-2 bg-white rounded-lg shadow-md mt-5 mb-5">
+    <h2 class="text-gray-800 text-2xl mt-2 font-bold mb-5">Create New Task</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="title" class="text-gray-800 block font-medium text-md">Title</label>
+            <input type="text" name="title" id="title" class="w-full border outline-none px-4 py-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="text-gray-800 block font-medium text-md">Description</label>
+            <textarea name="description" id="description" cols="30" rows="3"
+                class="border w-full p-2 outline-none rounded" required></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="due_date" class="text-gray-800 block font-medium text-md">Due Date</label>
+            <input type="datetime-local" name="due_date" id="due_date"
+                class="w-full outline-none border px-4 py-2 rounded" required>
+        </div>
+        <button type="submit"
+            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-4 mb-4 w-full transition-colors">
+            Add Task
+        </button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="{% url 'task-list' %}" class="text-green-500 hover:text-green-600">Back to Home</a>
+    </div>
+</div>
+{% endblock content %}
