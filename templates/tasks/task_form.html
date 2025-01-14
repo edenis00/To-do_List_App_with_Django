@@ -1,0 +1,47 @@
+{% extends 'tasks/base.html' %}
+{% block title %}{% if object %}Edit Task{% else %}Add Task{% endif %}{% endblock title %}
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-2 bg-white rounded-lg shadow-md mt-5 mb-5">
+    <h2 class="text-gray-800 text-2xl my-3 font-bold">
+        {% if object %}Edit Task{% else %}Create New Task{% endif %}
+    </h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {% if form.title.errors %}
+            <p class="text-sm text-red-600">{{ form.title.errors.0 }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {% if form.description.errors %}
+            <p class="text-sm text-red-600">{{ form.description.errors.0 }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.due_date.label_tag }}
+            {{ form.due_date }}
+            {% if form.due_date.errors %}
+            <p class="text-sm text-red-600">{{ form.due_date.errors.0 }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.completed.label_tag }}
+            {{ form.completed }}
+            {% if form.completed.errors %}
+            <p class="text-sm text-red-600">{{ form.completed.errors.0 }}</p>
+            {% endif %}
+        </div>
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-4 mb-4 w-full">
+            {% if object %}Update Task{% else %}Add Task{% endif %}
+        </button>
+    </form>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'task-list' %}" class="text-green-500 hover:text-green-600">Back to Home</a>
+    </div>
+</div>
+{% endblock content %}

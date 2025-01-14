@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} TODO App {% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'src/css/style.css' %}" />
+  </head>
+
+  <body class="bg-gray-100 font-sans">
+    <header class="text-center p-4">
+      <h1 class="font-bold text-3xl">TODO App</h1>
+    </header>
+    <main>
+      <div class="container max-w-4xl mx-auto p-4">
+        {% block content %} {% endblock content %}
+      </div>
+    </main>
+    <footer class="text-center">
+      <p>&copy; 2024 TODO App</p>
+    </footer>
+  </body>
+  <script src="{% static 'src/js/action.js' %}"></script>
+</html>
