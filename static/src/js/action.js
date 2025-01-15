@@ -67,20 +67,24 @@ function renderTask(tasks) {
     }
     taskContainer.innerHTML = "";
     tasks.forEach(task => {
-        taskElement =
+        var taskElement =
             `
         <div class="shadow-md rounded px-4 py-2 bg-white mb-2">
-            <div class="py-2 ">
-                <h3 class="text-gray-800 text-xl">${task.title}</h3>
-                <p class="text-md text-gray-600 w-full py-2">${task.description}</p>
-                <p class="text-xs text-gray-600 mt-1">${task.created_at}</p>
-                <div class="flex gap-2 mt-2">
-                    <a href="/tasks/${task.id}/edit"
-                        class="px-2 py-1 rounded text-white text-xs bg-yellow-500 hover:bg-yellow-600">Edit</a>
-                    <button onclick="openModal(${task.id})" type="button"
-                        class="px-2 py-1 text-white rounded bg-red-500 hover:bg-red-600 text-xs">Delete</button>
+            <div class="py-1 flex items-center justify-between">
+                <div class="flex gap-2">
+                    <h3 class="text-gray-800 w-[200px]">${task.title}</h3>
                 </div>
-                <hr class="mt-2">
+                <div class="flex gap-2">
+                    <p class="text-xs mr-2 text-gray-600">Due: ${task.due_date}</p>
+                    <a href="/tasks/${task.id}/edit"
+                        class="text-xs text-green-500 hover:text-green-600">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <button onclick="openModal(${task.id})" type="button"
+                        class="text-red-500 hover:text-red-600 text-xs">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
             </div>
         </div>
         `

@@ -1,4 +1,4 @@
-Django To-Do List App
+# Django To-Do List App
 
 Description
 A simple To-Do List app built with Django, using Class-Based Views (CBVs). Users can create, update, and delete tasks, as well as mark them as completed.
@@ -15,7 +15,7 @@ Authentication: Django’s built-in authentication system
 Installation
 
 Clone the repository:
-git clone https://github.com/edenis00/To-do_List_App_with_Django
+git clone <https://github.com/edenis00/To-do_List_App_with_Django>
 Navigate into the project folder:
 
 cd todolist-app
@@ -30,7 +30,7 @@ python manage.py createsuperuser
 
 Run the server:
 python manage.py runserver
-Visit http://127.0.0.1:8000/ in your browser.
+Visit <http://127.0.0.1:8000/> in your browser.
 
 Usage
 Create a new task via the "Add Task" page.
