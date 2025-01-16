@@ -1,7 +1,7 @@
 {% extends 'tasks/base.html' %}
 {% block title %}{% if object %}Edit Task{% else %}Add Task{% endif %}{% endblock title %}
 {% block content %}
-<div class="max-w-md mx-auto px-4 py-2 bg-white rounded-lg shadow-md mt-5 mb-5">
+<div class="max-w-md mx-auto px-4 py-2 bg-white rounded-lg shadow-md">
     <h2 class="text-gray-800 text-2xl my-3 font-bold">
         {% if object %}Edit Task{% else %}Create New Task{% endif %}
     </h2>
@@ -35,7 +35,7 @@
             <p class="text-sm text-red-600">{{ form.completed.errors.0 }}</p>
             {% endif %}
         </div>
-        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-4 mb-4 w-full">
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full">
             {% if object %}Update Task{% else %}Add Task{% endif %}
         </button>
     </form>

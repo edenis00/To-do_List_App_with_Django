@@ -11,15 +11,17 @@
 </head>
 
 <body class="bg-gray-100 font-sans">
-  <header class="text-center p-4">
+  <header class="text-center p-4 fixed top-0 w-full">
     <h1 class="font-bold text-3xl">TODO App</h1>
   </header>
   <main>
-    <div class="container max-w-2xl mx-auto p-4">
-      {% block content %} {% endblock content %}
+    <div class="container max-w-xl mx-auto px-4">
+      <div class="flex flex-col justify-center items-center h-screen">
+        {% block content %} {% endblock content %}
+      </div>
     </div>
   </main>
-  <footer class="text-center">
+  <footer class="text-center fixed bottom-0 w-full">
     <p>&copy; 2024 TODO App</p>
   </footer>
 </body>

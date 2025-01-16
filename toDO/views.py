@@ -1,6 +1,8 @@
+import json
 from .models import Task
-from django.http import JsonResponse
 from .forms import TaskForm
+from django.views import View
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -55,3 +57,26 @@ class TaskDeleteView(DeleteView):
     model = Task
     template_name = "tasks/task_confirm_delete.html"
     success_url = reverse_lazy("task-list")
+
+
+class TaskCompleteView(View):
+    def post(self, request, *args, **kwargs):
+        task_id = kwargs.get('pk')
+        try:
+            task = Task.objects.get(id=task_id)
+            completed = json.loads(request.body).get(
+                'completed',
+                task.completed
+            )
+            task.completed = completed
+            task.save()
+            return JsonResponse({
+                "success": True,
+                "completed": task.completed,
+                "message": "Task completed successfully"
+            })
+        except Task.DoesNotExist:
+            return JsonResponse({
+                "success": False,
+                "message": "Task not found"
+            }, status=404)
